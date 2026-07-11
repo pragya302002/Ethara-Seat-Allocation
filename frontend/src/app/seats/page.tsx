@@ -98,9 +98,12 @@ export default function SeatsPage() {
               cursor: "pointer",
               textAlign: "center",
             }}
-            title={`${seat.seat_type} seat`}
+            title={`${seat.seat_type} seat${seat.bay ? " — " + seat.bay : ""}`}
           >
-            {seat.seat_number}
+            <div>{seat.seat_number}</div>
+            {seat.bay && (
+              <div style={{ fontSize: 9, color: "var(--color-text-muted)", marginTop: 2 }}>{seat.bay}</div>
+            )}
           </button>
         ))}
       </div>
