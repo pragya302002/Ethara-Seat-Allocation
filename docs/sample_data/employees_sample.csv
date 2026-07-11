@@ -1,0 +1,101 @@
+employee_code,full_name,email,designation,employment_status,date_of_joining,location,role
+EMP00001,Eric Bernard,eric.bernard1@etharatest.com,Talent Acquisition Specialist,ACTIVE,2022-01-26,Bengaluru,ADMIN
+EMP00002,Matthew Davis,matthew.davis2@etharatest.com,Customer Success Manager,ACTIVE,2021-07-14,Gurugram,EMPLOYEE
+EMP00003,Colin Abbott,colin.abbott3@etharatest.com,Associate Product Manager,ACTIVE,2023-10-09,Hyderabad,EMPLOYEE
+EMP00004,Cassandra Roman,cassandra.roman4@etharatest.com,HR Executive,ACTIVE,2022-12-29,Hyderabad,EMPLOYEE
+EMP00005,Jessica Herrera,jessica.herrera5@etharatest.com,Account Executive,TERMINATED,2026-04-05,Bengaluru,EMPLOYEE
+EMP00006,Teresa Gray,teresa.gray6@etharatest.com,DevOps Engineer,ACTIVE,2025-12-18,Hyderabad,EMPLOYEE
+EMP00007,Andrea Calderon,andrea.calderon7@etharatest.com,Data Scientist,ACTIVE,2020-07-30,Hyderabad,EMPLOYEE
+EMP00008,Christine Hensley,christine.hensley8@etharatest.com,Customer Success Associate,ACTIVE,2023-10-31,Bengaluru,EMPLOYEE
+EMP00009,Barbara Bush,barbara.bush9@etharatest.com,Software Engineer II,ACTIVE,2026-03-25,Hyderabad,EMPLOYEE
+EMP00010,Brandon Perez,brandon.perez10@etharatest.com,Marketing Executive,ACTIVE,2024-12-24,Bengaluru,EMPLOYEE
+EMP00011,Keith Miller,keith.miller11@etharatest.com,Senior Product Manager,ACTIVE,2022-12-31,Bengaluru,EMPLOYEE
+EMP00012,Jesse Garcia,jesse.garcia12@etharatest.com,Finance Manager,ACTIVE,2025-09-23,Bengaluru,EMPLOYEE
+EMP00013,Joshua Reid,joshua.reid13@etharatest.com,ML Engineer,ACTIVE,2023-12-21,Bengaluru,EMPLOYEE
+EMP00014,Michael Wood,michael.wood14@etharatest.com,IT Support Engineer,ACTIVE,2021-12-08,Pune,EMPLOYEE
+EMP00015,Jason Adams,jason.adams15@etharatest.com,AI Engineer,ACTIVE,2022-11-02,Gurugram,EMPLOYEE
+EMP00016,Sharon Wong,sharon.wong16@etharatest.com,IT Support Engineer,ACTIVE,2022-09-06,Bengaluru,EMPLOYEE
+EMP00017,Chelsea Jackson,chelsea.jackson17@etharatest.com,Senior Data Scientist,ACTIVE,2021-10-15,Gurugram,EMPLOYEE
+EMP00018,Jessica Martin,jessica.martin18@etharatest.com,Compliance Officer,ACTIVE,2021-07-11,Gurugram,EMPLOYEE
+EMP00019,Noah Mayo,noah.mayo19@etharatest.com,Marketing Executive,ACTIVE,2022-03-24,Gurugram,EMPLOYEE
+EMP00020,Danielle Hawkins,danielle.hawkins20@etharatest.com,Staff Engineer,ACTIVE,2026-05-13,Gurugram,EMPLOYEE
+EMP00021,Gabrielle Cameron,gabrielle.cameron21@etharatest.com,AI Engineer,ACTIVE,2021-10-11,Hyderabad,EMPLOYEE
+EMP00022,Kimberly Perez,kimberly.perez22@etharatest.com,Legal Associate,ACTIVE,2023-05-29,Hyderabad,EMPLOYEE
+EMP00023,Antonio Stewart,antonio.stewart23@etharatest.com,HR Executive,ON_LEAVE,2026-01-08,Gurugram,EMPLOYEE
+EMP00024,Joseph Clark,joseph.clark24@etharatest.com,Compliance Officer,ACTIVE,2025-06-16,Pune,EMPLOYEE
+EMP00025,Sherri Walter,sherri.walter25@etharatest.com,Site Reliability Engineer,ACTIVE,2023-10-20,Gurugram,EMPLOYEE
+EMP00026,Leonard Rios,leonard.rios26@etharatest.com,AI Engineer,NOTICE_PERIOD,2022-05-21,Gurugram,EMPLOYEE
+EMP00027,Randall Rocha,randall.rocha27@etharatest.com,Finance Manager,ACTIVE,2023-05-06,Bengaluru,EMPLOYEE
+EMP00028,Stephen Baker,stephen.baker28@etharatest.com,UI/UX Designer,ACTIVE,2021-02-14,Hyderabad,EMPLOYEE
+EMP00029,John Hoffman,john.hoffman29@etharatest.com,Associate Product Manager,ACTIVE,2025-12-17,Bengaluru,EMPLOYEE
+EMP00030,Jose Richards,jose.richards30@etharatest.com,Customer Success Manager,ACTIVE,2021-07-27,Pune,EMPLOYEE
+EMP00031,Rachael Ross,rachael.ross31@etharatest.com,Cloud Infrastructure Engineer,ACTIVE,2021-05-12,Bengaluru,EMPLOYEE
+EMP00032,Jeffrey Bright,jeffrey.bright32@etharatest.com,Data Analyst,ON_LEAVE,2024-06-21,Gurugram,EMPLOYEE
+EMP00033,William Davis,william.davis33@etharatest.com,IT Support Engineer,ACTIVE,2025-02-21,Bengaluru,EMPLOYEE
+EMP00034,Brandon Rodriguez,brandon.rodriguez34@etharatest.com,Design Lead,ACTIVE,2022-10-15,Hyderabad,EMPLOYEE
+EMP00035,Courtney Conner,courtney.conner35@etharatest.com,Design Lead,ACTIVE,2022-10-16,Gurugram,EMPLOYEE
+EMP00036,Robert Brown,robert.brown36@etharatest.com,IT Support Engineer,ACTIVE,2025-05-06,Gurugram,EMPLOYEE
+EMP00037,Patrick Ferrell,patrick.ferrell37@etharatest.com,Compliance Officer,ACTIVE,2022-03-26,Gurugram,EMPLOYEE
+EMP00038,Allison Maddox,allison.maddox38@etharatest.com,ML Engineer,ACTIVE,2025-11-01,Hyderabad,EMPLOYEE
+EMP00039,Michelle Smith,michelle.smith39@etharatest.com,Associate Product Manager,ON_LEAVE,2021-05-05,Gurugram,EMPLOYEE
+EMP00040,Jennifer Maldonado,jennifer.maldonado40@etharatest.com,HR Business Partner,ACTIVE,2024-04-07,Pune,EMPLOYEE
+EMP00041,Amanda Adams,amanda.adams41@etharatest.com,QA Engineer,ACTIVE,2026-01-31,Bengaluru,EMPLOYEE
+EMP00042,Danielle Rodriguez,danielle.rodriguez42@etharatest.com,QA Engineer,ACTIVE,2021-03-23,Hyderabad,EMPLOYEE
+EMP00043,Ryan Chavez,ryan.chavez43@etharatest.com,HR Executive,ACTIVE,2023-12-24,Pune,EMPLOYEE
+EMP00044,Stephanie Liu,stephanie.liu44@etharatest.com,Marketing Executive,ACTIVE,2024-07-15,Gurugram,EMPLOYEE
+EMP00045,Jose Mason,jose.mason45@etharatest.com,ML Engineer,ACTIVE,2020-12-16,Gurugram,EMPLOYEE
+EMP00046,Guy Gaines,guy.gaines46@etharatest.com,Content Strategist,ACTIVE,2023-04-25,Bengaluru,EMPLOYEE
+EMP00047,Monica Evans,monica.evans47@etharatest.com,Compliance Officer,ACTIVE,2023-09-05,Gurugram,EMPLOYEE
+EMP00048,Danielle Lynch,danielle.lynch48@etharatest.com,Site Reliability Engineer,ACTIVE,2024-10-09,Bengaluru,EMPLOYEE
+EMP00049,Eric Farmer,eric.farmer49@etharatest.com,HR Executive,ACTIVE,2021-03-02,Bengaluru,EMPLOYEE
+EMP00050,Amber Osborne,amber.osborne50@etharatest.com,Talent Acquisition Specialist,ACTIVE,2025-05-06,Hyderabad,EMPLOYEE
+EMP00051,Alyssa Smith,alyssa.smith51@etharatest.com,Financial Analyst,ACTIVE,2026-04-22,Hyderabad,EMPLOYEE
+EMP00052,Mario Smith,mario.smith52@etharatest.com,UI/UX Designer,ACTIVE,2023-10-06,Bengaluru,EMPLOYEE
+EMP00053,Sarah Koch,sarah.koch53@etharatest.com,Staff Engineer,ACTIVE,2024-08-18,Hyderabad,EMPLOYEE
+EMP00054,Marie Parker,marie.parker54@etharatest.com,Operations Executive,NOTICE_PERIOD,2021-03-30,Gurugram,EMPLOYEE
+EMP00055,Brian Humphrey,brian.humphrey55@etharatest.com,Operations Manager,ACTIVE,2022-04-16,Hyderabad,EMPLOYEE
+EMP00056,Stacey Miller,stacey.miller56@etharatest.com,Legal Associate,ACTIVE,2025-08-26,Hyderabad,EMPLOYEE
+EMP00057,Todd Jones,todd.jones57@etharatest.com,Compliance Officer,ACTIVE,2023-02-13,Hyderabad,EMPLOYEE
+EMP00058,Kathleen Cannon,kathleen.cannon58@etharatest.com,Systems Administrator,ACTIVE,2024-02-14,Bengaluru,EMPLOYEE
+EMP00059,David Alvarez,david.alvarez59@etharatest.com,Content Strategist,ACTIVE,2025-10-30,Pune,EMPLOYEE
+EMP00060,Andrea Baker,andrea.baker60@etharatest.com,Software Engineer I,ACTIVE,2021-03-23,Bengaluru,EMPLOYEE
+EMP00061,Monique Henderson,monique.henderson61@etharatest.com,Site Reliability Engineer,ACTIVE,2025-09-10,Gurugram,EMPLOYEE
+EMP00062,Jason Ryan,jason.ryan62@etharatest.com,Product Manager,ACTIVE,2025-03-03,Hyderabad,EMPLOYEE
+EMP00063,Jessica Harris,jessica.harris63@etharatest.com,Legal Associate,ACTIVE,2023-12-01,Pune,EMPLOYEE
+EMP00064,Larry Carney,larry.carney64@etharatest.com,Site Reliability Engineer,ACTIVE,2021-09-13,Pune,EMPLOYEE
+EMP00065,Debra Kim,debra.kim65@etharatest.com,Software Engineer I,ACTIVE,2021-05-15,Hyderabad,EMPLOYEE
+EMP00066,Zachary Martinez,zachary.martinez66@etharatest.com,Sales Manager,ACTIVE,2021-03-04,Pune,EMPLOYEE
+EMP00067,Jeffrey Morgan,jeffrey.morgan67@etharatest.com,Finance Manager,ACTIVE,2025-09-16,Gurugram,EMPLOYEE
+EMP00068,Brianna Hall,brianna.hall68@etharatest.com,Financial Analyst,ACTIVE,2024-06-09,Pune,EMPLOYEE
+EMP00069,Jeffrey Jones,jeffrey.jones69@etharatest.com,Data Analyst,ACTIVE,2025-03-10,Gurugram,EMPLOYEE
+EMP00070,Crystal Perez,crystal.perez70@etharatest.com,Financial Analyst,ACTIVE,2020-08-09,Bengaluru,EMPLOYEE
+EMP00071,Rebecca Heath,rebecca.heath71@etharatest.com,Senior QA Engineer,TERMINATED,2024-12-18,Hyderabad,EMPLOYEE
+EMP00072,Chad Young,chad.young72@etharatest.com,Site Reliability Engineer,ACTIVE,2026-03-16,Pune,EMPLOYEE
+EMP00073,Elizabeth Lewis,elizabeth.lewis73@etharatest.com,UI/UX Designer,ACTIVE,2023-11-03,Pune,EMPLOYEE
+EMP00074,David Walls,david.walls74@etharatest.com,Talent Acquisition Specialist,ACTIVE,2022-10-14,Hyderabad,EMPLOYEE
+EMP00075,Ashley Kennedy,ashley.kennedy75@etharatest.com,Marketing Manager,ACTIVE,2021-06-14,Hyderabad,EMPLOYEE
+EMP00076,Kristen Aguirre,kristen.aguirre76@etharatest.com,SDET,ACTIVE,2023-01-03,Gurugram,EMPLOYEE
+EMP00077,James Davis,james.davis77@etharatest.com,Systems Administrator,ACTIVE,2022-04-10,Pune,EMPLOYEE
+EMP00078,Ryan Henderson,ryan.henderson78@etharatest.com,IT Support Engineer,ACTIVE,2023-04-04,Hyderabad,EMPLOYEE
+EMP00079,Stuart Daniel,stuart.daniel79@etharatest.com,Senior Product Manager,ON_LEAVE,2023-03-31,Gurugram,EMPLOYEE
+EMP00080,Emily Joyce,emily.joyce80@etharatest.com,Senior Product Manager,ACTIVE,2024-09-21,Gurugram,EMPLOYEE
+EMP00081,Corey Powell,corey.powell81@etharatest.com,UI/UX Designer,ACTIVE,2022-11-23,Gurugram,EMPLOYEE
+EMP00082,Matthew Hensley,matthew.hensley82@etharatest.com,Accounts Executive,ACTIVE,2024-02-22,Bengaluru,EMPLOYEE
+EMP00083,John Lee,john.lee83@etharatest.com,Customer Success Manager,NOTICE_PERIOD,2024-10-14,Pune,EMPLOYEE
+EMP00084,Shane Henderson,shane.henderson84@etharatest.com,Finance Manager,NOTICE_PERIOD,2023-01-23,Bengaluru,EMPLOYEE
+EMP00085,Joshua Wright,joshua.wright85@etharatest.com,Staff Engineer,ON_LEAVE,2024-10-24,Hyderabad,EMPLOYEE
+EMP00086,Sandra Ramos,sandra.ramos86@etharatest.com,DevOps Engineer,ACTIVE,2020-10-02,Pune,EMPLOYEE
+EMP00087,Michelle Pierce,michelle.pierce87@etharatest.com,Customer Success Manager,ACTIVE,2023-03-12,Gurugram,EMPLOYEE
+EMP00088,Brent Kidd,brent.kidd88@etharatest.com,Systems Administrator,ACTIVE,2025-03-08,Hyderabad,EMPLOYEE
+EMP00089,Mary Novak,mary.novak89@etharatest.com,Software Engineer II,ACTIVE,2025-02-18,Pune,EMPLOYEE
+EMP00090,Sara Allison,sara.allison90@etharatest.com,Staff Engineer,ACTIVE,2023-12-22,Hyderabad,EMPLOYEE
+EMP00091,Gabriel Tucker,gabriel.tucker91@etharatest.com,DevOps Engineer,ACTIVE,2024-04-03,Gurugram,EMPLOYEE
+EMP00092,Jason Morales,jason.morales92@etharatest.com,Systems Administrator,ACTIVE,2025-07-04,Hyderabad,EMPLOYEE
+EMP00093,Brian Gray,brian.gray93@etharatest.com,Customer Success Associate,NOTICE_PERIOD,2022-01-08,Gurugram,EMPLOYEE
+EMP00094,Tricia Baker,tricia.baker94@etharatest.com,Accounts Executive,ACTIVE,2020-09-15,Bengaluru,EMPLOYEE
+EMP00095,Kristen Gibson,kristen.gibson95@etharatest.com,Customer Success Manager,ACTIVE,2021-08-25,Pune,EMPLOYEE
+EMP00096,Rodney Bernard,rodney.bernard96@etharatest.com,HR Business Partner,ACTIVE,2022-07-30,Pune,EMPLOYEE
+EMP00097,Wendy Peters,wendy.peters97@etharatest.com,Senior QA Engineer,ACTIVE,2025-06-18,Gurugram,EMPLOYEE
+EMP00098,Jennifer Moore,jennifer.moore98@etharatest.com,Compliance Officer,ACTIVE,2021-10-13,Hyderabad,EMPLOYEE
+EMP00099,Kenneth Novak,kenneth.novak99@etharatest.com,QA Engineer,ACTIVE,2021-09-09,Hyderabad,EMPLOYEE
+EMP00100,Beth Daniels,beth.daniels100@etharatest.com,Senior Product Manager,ACTIVE,2024-10-31,Gurugram,EMPLOYEE

@@ -1,0 +1,21 @@
+# Backend
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/out/
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
