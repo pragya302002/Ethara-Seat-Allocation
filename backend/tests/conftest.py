@@ -110,7 +110,7 @@ async def vacant_seat(db_session: AsyncSession):
         seat_number=f"TEST-{uuid.uuid4().hex[:6]}",
         zone_id=zone.id,
         seat_type=SeatType.STANDARD,
-        status=SeatStatus.VACANT,
+        status=SeatStatus.AVAILABLE,
     )
     db_session.add(seat)
     await db_session.commit()

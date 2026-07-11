@@ -1,15 +1,15 @@
-"""initial schema
+"""initial schema v2 - spec compliant
 
-Revision ID: f0b08bfdabb4
+Revision ID: 644676b91143
 Revises: 
-Create Date: 2026-07-11 02:56:44.125981
+Create Date: 2026-07-11 22:35:46.087811
 
 """
 from alembic import op
 import sqlalchemy as sa
 
 
-revision = 'f0b08bfdabb4'
+revision = '644676b91143'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -114,9 +114,10 @@ def upgrade() -> None:
     op.create_table('seats',
     sa.Column('seat_number', sa.String(length=20), nullable=False),
     sa.Column('zone_id', sa.UUID(), nullable=False),
+    sa.Column('bay', sa.String(length=20), nullable=True),
     sa.Column('row_label', sa.String(length=10), nullable=True),
     sa.Column('seat_type', sa.Enum('STANDARD', 'STANDING_DESK', 'CABIN', 'MEETING_POD', 'ACCESSIBLE', name='seattype'), nullable=False),
-    sa.Column('status', sa.Enum('VACANT', 'OCCUPIED', 'RESERVED', 'OUT_OF_SERVICE', name='seatstatus'), nullable=False),
+    sa.Column('status', sa.Enum('AVAILABLE', 'OCCUPIED', 'RESERVED', 'MAINTENANCE', name='seatstatus'), nullable=False),
     sa.Column('id', sa.UUID(), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),

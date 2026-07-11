@@ -1,7 +1,7 @@
 export type UserRole = "admin" | "hr" | "project_manager" | "employee";
 export type EmploymentStatus = "active" | "on_leave" | "terminated" | "notice_period";
 export type SeatType = "standard" | "standing_desk" | "cabin" | "meeting_pod" | "accessible";
-export type SeatStatus = "vacant" | "occupied" | "reserved" | "out_of_service";
+export type SeatStatus = "available" | "occupied" | "reserved" | "maintenance";
 
 export interface Employee {
   id: string;
@@ -18,6 +18,9 @@ export interface Employee {
   is_active: boolean;
   created_at: string;
   updated_at: string;
+  current_project_name: string | null;
+  seat_allocation_status: string;
+  seat_number: string | null;
 }
 
 export interface EmployeePage {
@@ -31,16 +34,23 @@ export interface Seat {
   id: string;
   seat_number: string;
   zone_id: string;
+  bay: string | null;
   row_label: string | null;
   seat_type: SeatType;
   status: SeatStatus;
+  allocated_employee_name?: string | null;
+  allocated_project_name?: string | null;
+  allocation_date?: string | null;
+  zone_name?: string | null;
+  floor_number?: number | null;
+  building_name?: string | null;
 }
 
 export interface OccupancySummary {
-  vacant: number;
+  available: number;
   occupied: number;
   reserved: number;
-  out_of_service: number;
+  maintenance: number;
   total: number;
   utilization_percent: number;
 }
@@ -96,6 +106,7 @@ export interface RecentAllocationItem {
 export interface DashboardSummary {
   total_employees: number;
   new_joiners_last_30_days: number;
+  pending_allocation_count: number;
   occupancy: OccupancySummary;
   department_wise: DepartmentCount[];
   project_wise: ProjectCount[];

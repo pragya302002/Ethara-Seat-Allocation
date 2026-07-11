@@ -18,9 +18,13 @@ class Settings(BaseSettings):
 
     # --- Database ---
     # Railway provides this as DATABASE_URL. SQLAlchemy's async driver needs
-    # "postgresql+asyncpg://" — Railway gives plain "postgresql://", so we
+    # "postgresql+psycopg://" — Railway gives plain "postgresql://", so we
     # normalize it in the property below rather than requiring the env var
-    # itself to be edited by hand (a common deploy footgun).
+    # itself to be edited by hand (a common deploy footgun). psycopg (v3)
+    # is used instead of asyncpg because asyncpg has no pre-built Windows
+    # wheels for recent Python versions and requires a C++ compiler to
+    # build from source there — psycopg[binary] ships working wheels on
+    # Windows/Mac/Linux alike. See docs/DEBUGGING.md.
     DATABASE_URL: str
 
     @property
@@ -44,7 +48,7 @@ class Settings(BaseSettings):
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",") if origin.strip()]
 
     # --- AI Assistant ---
-    GROQ_API_KEY: str=" "
+    GROQ_API_KEY: str = ""
 
     model_config = SettingsConfigDict(env_file=".env", case_sensitive=True, extra="ignore")
 

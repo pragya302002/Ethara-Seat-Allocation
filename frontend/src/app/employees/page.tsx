@@ -72,7 +72,7 @@ export default function EmployeesPage() {
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
           <thead>
             <tr style={{ borderBottom: "1px solid var(--color-border)", textAlign: "left" }}>
-              {["Code", "Name", "Designation", "Status", "Location", "Joined"].map((h) => (
+              {["Code", "Name", "Designation", "Status", "Project", "Seat", "Location", "Joined"].map((h) => (
                 <th key={h} style={{ padding: "10px 16px", color: "var(--color-text-secondary)", fontWeight: 500 }}>
                   {h}
                 </th>
@@ -82,14 +82,14 @@ export default function EmployeesPage() {
           <tbody>
             {isLoading && (
               <tr>
-                <td colSpan={6} style={{ padding: 20, textAlign: "center", color: "var(--color-text-muted)" }}>
+                <td colSpan={8} style={{ padding: 20, textAlign: "center", color: "var(--color-text-muted)" }}>
                   Loading…
                 </td>
               </tr>
             )}
             {!isLoading && data?.items.length === 0 && (
               <tr>
-                <td colSpan={6} style={{ padding: 20, textAlign: "center", color: "var(--color-text-muted)" }}>
+                <td colSpan={8} style={{ padding: 20, textAlign: "center", color: "var(--color-text-muted)" }}>
                   No employees found.
                 </td>
               </tr>
@@ -103,6 +103,20 @@ export default function EmployeesPage() {
                 <td style={{ padding: "10px 16px", color: "var(--color-text-secondary)" }}>{emp.designation}</td>
                 <td style={{ padding: "10px 16px" }}>
                   <StatusBadge status={emp.employment_status} />
+                </td>
+                <td style={{ padding: "10px 16px", color: "var(--color-text-secondary)" }}>{emp.current_project_name || "—"}</td>
+                <td style={{ padding: "10px 16px" }}>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      padding: "3px 8px",
+                      borderRadius: 6,
+                      background: "var(--color-surface-raised)",
+                      color: emp.seat_allocation_status === "Allocated" ? "var(--color-vacant)" : "var(--color-text-muted)",
+                    }}
+                  >
+                    {emp.seat_allocation_status}
+                  </span>
                 </td>
                 <td style={{ padding: "10px 16px", color: "var(--color-text-secondary)" }}>{emp.location || "—"}</td>
                 <td className="mono" style={{ padding: "10px 16px", color: "var(--color-text-muted)" }}>

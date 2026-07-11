@@ -120,7 +120,18 @@ class AIAssistantService:
             if allocation is None:
                 return f"{emp.full_name} does not currently have an assigned seat."
             seat = allocation.seat
-            return f"{emp.full_name} sits at seat {seat.seat_number}."
+            from app.models.location import Zone, Floor
+            zone = await self.db.get(Zone, seat.zone_id)
+            floor = await self.db.get(Floor, zone.floor_id) if zone else None
+            bay_part = f", {seat.bay}" if seat.bay else ""
+            location = f"Floor {floor.floor_number}, {zone.name}{bay_part}, Seat {seat.seat_number}" if floor and zone else f"seat {seat.seat_number}"
+            proj_row = await self.projects.get_active_assignment_for_employee(emp.id)
+            project_part = ""
+            if proj_row is not None:
+                project = await self.projects.get_by_id(proj_row.project_id)
+                if project:
+                    project_part = f" He/she is assigned to Project {project.name}."
+            return f"{emp.full_name} is seated on {location}.{project_part}"
 
         if name == "find_zone_neighbors":
             rows, _ = await self.employees.search(query=tool_input["employee_name"], page=1, page_size=1)

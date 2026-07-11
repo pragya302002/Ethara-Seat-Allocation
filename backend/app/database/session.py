@@ -1,10 +1,16 @@
 """
 Async database engine and session factory.
 
-We use SQLAlchemy 2.0's async engine throughout (asyncpg driver) so the
-whole request path — API -> service -> repository -> DB — stays non-blocking.
-FastAPI is async-native; a sync DB driver here would silently bottleneck
-concurrency under load.
+We use SQLAlchemy 2.0's async engine throughout (async Postgres driver) so
+the whole request path — API -> service -> repository -> DB — stays
+non-blocking. FastAPI is async-native; a sync DB driver here would
+silently bottleneck concurrency under load.
+
+Windows note: psycopg's async mode is incompatible with Windows' default
+ProactorEventLoop and raises `InterfaceError` without this policy set —
+see docs/DEBUGGING.md for the full explanation. This is a no-op on
+Linux/Mac, so it's safe to leave in unconditionally rather than special-
+casing the import per platform.
 """
 import asyncio
 import sys

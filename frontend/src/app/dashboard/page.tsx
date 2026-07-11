@@ -37,11 +37,12 @@ export default function DashboardPage() {
             />
             <StatCard
               label="Vacant Seats"
-              value={data.occupancy.vacant.toLocaleString()}
+              value={data.occupancy.available.toLocaleString()}
               accent="var(--color-vacant)"
             />
             <StatCard label="Utilization" value={`${data.occupancy.utilization_percent}%`} />
             <StatCard label="New Joiners (30d)" value={data.new_joiners_last_30_days} />
+            <StatCard label="Pending Allocation" value={data.pending_allocation_count} />
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
@@ -51,9 +52,9 @@ export default function DashboardPage() {
                   <Pie
                     data={[
                       { name: "Occupied", value: data.occupancy.occupied },
-                      { name: "Vacant", value: data.occupancy.vacant },
+                      { name: "Vacant", value: data.occupancy.available },
                       { name: "Reserved", value: data.occupancy.reserved },
-                      { name: "Out of Service", value: data.occupancy.out_of_service },
+                      { name: "Maintenance", value: data.occupancy.maintenance },
                     ]}
                     dataKey="value"
                     nameKey="name"

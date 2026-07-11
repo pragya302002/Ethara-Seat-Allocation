@@ -25,9 +25,16 @@ class DashboardService:
         self.projects = ProjectRepository(db)
         self.seats = SeatRepository(db)
 
+    async def project_utilization(self) -> list[dict]:
+        return await self.projects.project_headcounts()
+
+    async def floor_utilization(self) -> list[dict]:
+        return await self.seats.floor_utilization()
+
     async def summary(self) -> dict:
         total_employees = await self.employees.total_active_count()
         new_joiners = await self.employees.new_joiners_count(days=30)
+        pending_allocation = await self.employees.count_without_active_seat()
         occupancy = await self.seats.occupancy_summary()
         dept_counts = await self.employees.department_counts()
         project_counts = await self.projects.project_headcounts()
@@ -38,6 +45,7 @@ class DashboardService:
         return {
             "total_employees": total_employees,
             "new_joiners_last_30_days": new_joiners,
+            "pending_allocation_count": pending_allocation,
             "occupancy": occupancy,
             "department_wise": dept_counts,
             "project_wise": project_counts,

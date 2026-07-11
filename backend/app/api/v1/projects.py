@@ -8,7 +8,9 @@ from app.database.session import get_db
 from app.models.employee import Employee as EmployeeModel
 from app.models.enums import UserRole
 from app.models.project import Project as ProjectModel
+from app.repositories.employee_repository import EmployeeRepository
 from app.repositories.project_repository import ProjectRepository
+from app.schemas.employee import EmployeeOut
 from app.schemas.project import (
     ProjectAssignmentOut,
     ProjectAssignRequest,
@@ -75,6 +77,17 @@ async def update_project(
     await repo.commit()
     await db.refresh(project)
     return project
+
+
+@router.get("/{project_id}/employees", response_model=list[EmployeeOut])
+async def list_project_employees(
+    project_id: uuid.UUID, db: AsyncSession = Depends(get_db), _: EmployeeModel = Depends(get_current_employee)
+):
+    project = await ProjectRepository(db).get_by_id(project_id)
+    if project is None:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, "Project not found")
+    rows, _total = await EmployeeRepository(db).search_detailed(project_id=project_id, page_size=1000)
+    return rows
 
 
 @router.post("/{project_id}/assign", response_model=ProjectAssignmentOut, status_code=status.HTTP_201_CREATED)

@@ -120,7 +120,7 @@ async def test_allocate_to_employee_who_already_has_a_seat_returns_409(
         seat_number=f"TEST-2-{uuid.uuid4().hex[:6]}",
         zone_id=vacant_seat.zone_id,
         seat_type=SeatType.STANDARD,
-        status=SeatStatus.VACANT,
+        status=SeatStatus.AVAILABLE,
     )
     async with AsyncSessionLocal() as tmp_session:
         tmp_session.add(second_seat)

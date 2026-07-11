@@ -55,6 +55,18 @@ class ProjectRepository(BaseRepository[Project]):
         rows = (await self.db.execute(stmt)).all()
         return [f"{name} ({project})" for name, project in rows]
 
+    async def get_employees_for_project(self, project_id) -> list:
+        """Backs GET /projects/{id}/employees — active assignments only."""
+        from app.models.employee import Employee
+
+        stmt = (
+            select(Employee)
+            .join(ProjectAssignment, ProjectAssignment.employee_id == Employee.id)
+            .where(ProjectAssignment.project_id == project_id, ProjectAssignment.end_date.is_(None))
+            .order_by(Employee.full_name)
+        )
+        return list((await self.db.execute(stmt)).scalars().all())
+
     async def project_headcounts(self) -> list[dict]:
         """Powers dashboard's 'Project-wise Allocation' chart."""
         stmt = (

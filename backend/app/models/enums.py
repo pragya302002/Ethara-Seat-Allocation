@@ -24,10 +24,10 @@ class SeatType(str, enum.Enum):
 
 
 class SeatStatus(str, enum.Enum):
-    VACANT = "vacant"
+    AVAILABLE = "available"
     OCCUPIED = "occupied"
     RESERVED = "reserved"
-    OUT_OF_SERVICE = "out_of_service"
+    MAINTENANCE = "maintenance"
 
 
 class AllocationEventType(str, enum.Enum):

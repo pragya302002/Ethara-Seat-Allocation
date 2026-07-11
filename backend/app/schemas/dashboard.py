@@ -36,6 +36,7 @@ class RecentAllocationItem(BaseModel):
 class DashboardSummary(BaseModel):
     total_employees: int
     new_joiners_last_30_days: int
+    pending_allocation_count: int  # employees with no active seat — spec's "new joiners pending allocation"
     occupancy: OccupancySummary
     department_wise: list[DepartmentCount]
     project_wise: list[ProjectCount]

@@ -47,7 +47,7 @@ random.seed(42)
 
 TOTAL_EMPLOYEES = 5000
 SEAT_FILL_RATE = 0.88  # ~12% of employees are "new joiners" without a seat yet
-PROJECT_FILL_RATE = 0.82  # ~18% unassigned / bench
+PROJECT_FILL_RATE = 0.95  # spec: "each employee should be mapped to one active project" — small bench remainder is realistic
 
 DEMO_PASSWORD_HASH = hash_password("Password123!")  # shared across all seed accounts — see module docstring
 
@@ -78,6 +78,13 @@ DESIGNATIONS_BY_DEPT = {
 
 CLIENTS = ["Acme Corp", "Globex Industries", "Initech", "Umbrella Retail", "Stark Logistics",
            "Wayne Financial", "Wonka Foods", "Hooli Tech", "Vandelay Imports", "Soylent Health"]
+
+# Exact project names required by the Ethara AI assessment brief — not
+# placeholder/generic names, these must match verbatim for spec compliance.
+PROJECT_NAMES = [
+    "Indigo", "Indreed", "Mydreed", "Preed", "Serfy",
+    "Oreed", "Bedegreed", "Opreed", "Serry", "Kaary", "Mered",
+]
 
 BUILDINGS = ["Tower A", "Tower B"]
 FLOORS_PER_BUILDING = 6
@@ -122,12 +129,14 @@ async def seed_office_hierarchy(db: AsyncSession) -> list[Seat]:
                     seat_type = random.choices(
                         list(SeatType), weights=[75, 10, 8, 5, 2], k=1
                     )[0]
+                    bay_number = (i - 1) // 20 + 1  # ~20 seats per bay within a zone
                     seat = Seat(
                         seat_number=f"{zone_name[5:8].upper()}-{i:03d}",
                         zone_id=zone.id,
+                        bay=f"Bay {bay_number}",
                         row_label=str((i - 1) // 10 + 1),
                         seat_type=seat_type,
-                        status=SeatStatus.VACANT,
+                        status=SeatStatus.AVAILABLE,
                     )
                     seats.append(seat)
     db.add_all(seats)
@@ -209,24 +218,23 @@ async def seed_employees(db: AsyncSession, depts: dict[str, Department]) -> list
 async def seed_projects(db: AsyncSession, employees: list[Employee]) -> list[Project]:
     managers_pool = [e for e in employees if e.role == UserRole.PROJECT_MANAGER] or employees[:20]
     projects = []
-    project_names = [
-        "Atlas", "Phoenix", "Nova", "Zenith", "Orion", "Titan", "Nimbus", "Vertex",
-        "Quantum", "Horizon", "Catalyst", "Meridian", "Pulse", "Fusion", "Apex",
-        "Beacon", "Cascade", "Ember", "Frontier", "Halo",
-    ]
-    for idx, name in enumerate(project_names, start=1):
+    for idx, name in enumerate(PROJECT_NAMES, start=1):
         manager = random.choice(managers_pool)
         start = date.today() - timedelta(days=random.randint(30, 900))
-        is_active = random.random() < 0.8
+        # All spec-required projects stay active — with only 11 official
+        # project names (vs. the 20 placeholder names this replaced), we
+        # want every one of them available as a valid "active project" for
+        # employee mapping, per the spec's "each employee mapped to one
+        # active project" requirement.
         project = Project(
-            name=f"Project {name}",
+            name=name,
             code=f"PRJ-{idx:03d}",
             client=random.choice(CLIENTS),
             manager_id=manager.id,
-            team_size_target=random.randint(5, 40),
+            team_size_target=random.randint(200, 600),  # ~5000 employees / 11 projects
             start_date=start,
-            end_date=None if is_active else start + timedelta(days=random.randint(60, 400)),
-            is_active=is_active,
+            end_date=None,
+            is_active=True,
         )
         projects.append(project)
     db.add_all(projects)
@@ -277,6 +285,33 @@ async def seed_seat_allocations(db: AsyncSession, employees: list[Employee], sea
           f"({len(employees) - fill_count} employees left seatless as 'new joiners').")
 
 
+async def mark_reserved_and_maintenance_seats(db: AsyncSession, seats: list[Seat]) -> None:
+    """Spec requires 'at least 100 reserved seats' and implies some seats
+    under maintenance (Available/Occupied/Reserved/Maintenance are all
+    named as real statuses to demonstrate). Carves these out of whatever's
+    still AVAILABLE after allocation — run this AFTER
+    seed_seat_allocations, not before, or it would compete with allocation
+    for the same seats. Buffer numbers (180/70) are comfortably above the
+    spec's stated minimums (100/implied) so the requirement holds even
+    with the seeded data's inherent randomness."""
+    still_available = [s for s in seats if s.status == SeatStatus.AVAILABLE]
+    random.shuffle(still_available)
+
+    reserved_count = min(180, len(still_available))
+    for seat in still_available[:reserved_count]:
+        seat.status = SeatStatus.RESERVED
+
+    remaining = still_available[reserved_count:]
+    maintenance_count = min(70, len(remaining))
+    for seat in remaining[:maintenance_count]:
+        seat.status = SeatStatus.MAINTENANCE
+
+    await db.flush()
+    final_available = len(remaining) - maintenance_count
+    print(f"Marked {reserved_count} seats RESERVED, {maintenance_count} seats MAINTENANCE "
+          f"({final_available} remain AVAILABLE).")
+
+
 async def main() -> None:
     async with AsyncSessionLocal() as db:
         existing = (await db.execute(select(Employee.id).limit(1))).first()
@@ -291,6 +326,7 @@ async def main() -> None:
         projects = await seed_projects(db, employees)
         await seed_project_assignments(db, employees, projects)
         await seed_seat_allocations(db, employees, seats)
+        await mark_reserved_and_maintenance_seats(db, seats)
 
         await db.commit()
         print("\nSeed complete.")

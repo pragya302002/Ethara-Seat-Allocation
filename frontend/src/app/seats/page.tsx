@@ -53,7 +53,7 @@ export default function SeatsPage() {
 
       {occupancy && (
         <div style={{ display: "flex", gap: 16, marginBottom: 24 }}>
-          <StatCard label="Vacant Now" value={occupancy.occupancy.vacant} accent="var(--color-vacant)" />
+          <StatCard label="Vacant Now" value={occupancy.occupancy.available} accent="var(--color-vacant)" />
           <StatCard label="Occupied" value={occupancy.occupancy.occupied} accent="var(--color-occupied)" />
           <StatCard label="Utilization" value={`${occupancy.occupancy.utilization_percent}%`} />
         </div>

@@ -43,6 +43,13 @@ class EmployeeOut(EmployeeBase):
     is_active: bool
     created_at: datetime
     updated_at: datetime
+    # Computed via join at query time (not stored columns) — see
+    # employee_repository.py search(). Same reasoning as Seat's
+    # allocated_project_name: derived from ProjectAssignment/SeatAllocation,
+    # which remain the single source of truth.
+    current_project_name: str | None = None
+    seat_allocation_status: str = "Unallocated"  # "Allocated" | "Unallocated"
+    seat_number: str | None = None
 
 
 class EmployeePage(BaseModel):

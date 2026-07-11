@@ -35,7 +35,7 @@ class SeatService:
         seat = await self.seats.get_by_id(payload.seat_id)
         if seat is None:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "Seat not found")
-        if seat.status != SeatStatus.VACANT:
+        if seat.status != SeatStatus.AVAILABLE:
             raise HTTPException(status.HTTP_409_CONFLICT, f"Seat is currently {seat.status.value}, not vacant")
 
         employee = await self.employees.get_by_id(payload.employee_id)
@@ -73,7 +73,7 @@ class SeatService:
 
         active.release_date = payload.release_date or date_type.today()
         seat = await self.seats.get_by_id(payload.seat_id)
-        seat.status = SeatStatus.VACANT
+        seat.status = SeatStatus.AVAILABLE
         await self.db.commit()
         await self.db.refresh(active)
         return active
@@ -86,7 +86,7 @@ class SeatService:
         new_seat = await self.seats.get_by_id(payload.new_seat_id)
         if new_seat is None:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "Target seat not found")
-        if new_seat.status != SeatStatus.VACANT:
+        if new_seat.status != SeatStatus.AVAILABLE:
             raise HTTPException(status.HTTP_409_CONFLICT, "Target seat is not vacant")
 
         transfer_date = payload.transfer_date or date_type.today()
@@ -95,7 +95,7 @@ class SeatService:
         if current is not None:
             current.release_date = transfer_date
             old_seat = await self.seats.get_by_id(current.seat_id)
-            old_seat.status = SeatStatus.VACANT
+            old_seat.status = SeatStatus.AVAILABLE
 
         new_allocation = SeatAllocation(
             seat_id=new_seat.id,

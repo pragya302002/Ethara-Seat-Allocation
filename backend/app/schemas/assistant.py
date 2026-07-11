@@ -8,3 +8,13 @@ class AssistantQueryRequest(BaseModel):
 class AssistantQueryResponse(BaseModel):
     answer: str
     query_understood: bool
+
+
+class AIQueryRequest(BaseModel):
+    """Matches the spec's exact POST /ai/query contract: {"query": "..."}"""
+    query: str
+
+
+class AIQueryResponse(BaseModel):
+    """Matches the spec's exact POST /ai/query contract: {"answer": "..."}"""
+    answer: str

@@ -26,14 +26,26 @@ async def list_employees(
     q: str | None = Query(None, description="Search by name, employee code, or email"),
     department_id: uuid.UUID | None = None,
     employment_status: str | None = None,
+    project_id: uuid.UUID | None = Query(None, description="Filter by current active project"),
+    floor_number: int | None = Query(None, description="Filter by the floor of the employee's current seat"),
+    zone_id: uuid.UUID | None = Query(None, description="Filter by the zone of the employee's current seat"),
+    seat_status: str | None = Query(None, description="Filter by the status of the employee's current seat"),
     page: int = Query(1, ge=1),
     page_size: int = Query(25, ge=1, le=100),
     db: AsyncSession = Depends(get_db),
     _: EmployeeModel = Depends(get_current_employee),
 ):
     repo = EmployeeRepository(db)
-    rows, total = await repo.search(
-        query=q, department_id=department_id, employment_status=employment_status, page=page, page_size=page_size
+    rows, total = await repo.search_detailed(
+        query=q,
+        department_id=department_id,
+        employment_status=employment_status,
+        project_id=project_id,
+        floor_number=floor_number,
+        zone_id=zone_id,
+        seat_status=seat_status,
+        page=page,
+        page_size=page_size,
     )
     return EmployeePage(items=rows, total=total, page=page, page_size=page_size)
 
@@ -83,6 +95,7 @@ async def create_employee(
 
 
 @router.patch("/{employee_id}", response_model=EmployeeOut)
+@router.put("/{employee_id}", response_model=EmployeeOut)
 async def update_employee(
     employee_id: uuid.UUID,
     payload: EmployeeUpdate,

@@ -13,7 +13,7 @@ OUT_OF_SERVICE), updated by the service layer whenever an allocation event
 is written. This is a deliberate denormalization: dashboard occupancy
 queries ("vacant seats on Floor 3") run far more often than allocation
 writes, so paying a small consistency-management cost in the service layer
-buys a plain indexed WHERE status = 'vacant' instead of a correlated
+buys a plain indexed WHERE status = 'available' instead of a correlated
 subquery against seat_allocations on every dashboard load.
 """
 import uuid
@@ -37,9 +37,10 @@ class Seat(Base, UUIDPKMixin, TimestampMixin):
 
     seat_number: Mapped[str] = mapped_column(String(20), nullable=False)
     zone_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("zones.id", ondelete="CASCADE"), nullable=False)
+    bay: Mapped[str | None] = mapped_column(String(20), nullable=True)  # sub-zone grouping, e.g. "Bay 4"
     row_label: Mapped[str | None] = mapped_column(String(10), nullable=True)  # see location.py docstring
     seat_type: Mapped[SeatType] = mapped_column(nullable=False, default=SeatType.STANDARD)
-    status: Mapped[SeatStatus] = mapped_column(nullable=False, default=SeatStatus.VACANT)
+    status: Mapped[SeatStatus] = mapped_column(nullable=False, default=SeatStatus.AVAILABLE)
 
     zone: Mapped["Zone"] = relationship(back_populates="seats")
     allocations: Mapped[list["SeatAllocation"]] = relationship(back_populates="seat")
